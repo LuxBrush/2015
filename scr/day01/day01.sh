@@ -1,50 +1,65 @@
 #!/bin/bash
 
+# Load external function to retrieve input data from a specified file
 . "./tools/get-input.sh"
 
+# Function to solve Part 1 of Day 01
 part01() {
-  local input=$1
-  local output=74
-  if [[ "$input" == "run" ]]; then
-    local floors=$(get-input "./day01/input.txt")
-    ((output = 0))
+  local command=$1        # Store the first argument as a command input (expected: "run")
+  local floor_position=74 # Default output value for floor position
 
-    for floor in $floors; do
+  # Execute the solution if the command is "run"
+  if [[ "$command" == "run" ]]; then
+    # Retrieve floor data from the input file
+    local floor_data=$(get-input "./day01/input.txt")
+    floor_position=0 # Initialize floor position counter to 0
+
+    # Loop through each floor in the floor data string
+    for floor in $floor_data; do
+      # Increment or decrement the floor position based on character
       if [[ "$floor" == "(" ]]; then
-        ((output++))
-      else
-        ((output--))
+        ((floor_position++)) # "(" represents going up a floor
+      elif [[ $floor == ")" ]]; then
+        ((floor_position--)) # ")" represents going down a floor
       fi
+
     done
   fi
 
-  printf "Day 01, Part 01: %s\n" "${output}"
+  # Output the result for Part 1
+  printf "Day 01, Part 01: %s\n" "${floor_position}"
 }
 
+# Function to solve Part 2 of Day 01
 part02() {
-  local input=$1
-  local count=0
-  local output=1795
+  local command=$1                   # Store the first argument as a command input (expected: "run")
+  local current_floor=0              # Initialize a counter to track the current floor
+  local first_basement_position=1795 # Default output if basement is never reached
 
-  if [[ $input == "run" ]]; then
-    output=0
-    local floors=$(get-input "./day01/input.txt")
-    for floor in $floors; do
-      ((output++))
-      if [[ $count -ne -1 ]]; then
-        if [[ $floor == "(" ]]; then
-          ((count++))
-        else
-          ((count--))
-        fi
+  # Execute the solution if the command is "run"
+  if [[ "$command" == "run" ]]; then
+    # Retrieve floor data from the input file
+    local floor_data=$(get-input "./day01/input.txt")
+    first_basement_position=0 # Initialize position counter
+
+    # Loop through each character in the floor data string
+    for floor in $floor_data; do
+      ((first_basement_position++)) # Increment the character position
+
+      # Track the current floor based on character
+      if [[ "$floor" == "(" ]]; then
+        ((current_floor++)) # "(" represents going up a floor
+      elif [[ $floor == ")" ]]; then
+        ((current_floor--)) # ")" represents going down a floor
       fi
 
-      # Break when count first equals -1
-      if [[ $count -eq -1 ]]; then
-        break
+      # Check if the current floor reaches -1 for the first time (i.e., basement)
+      if [[ $current_floor -eq -1 ]]; then
+        break # Exit the loop as we found the first basement position
       fi
     done
   fi
 
-  printf "Day 01, Part 02: %s\n" "${output}"
+  # Output the result for Part 2
+  printf "Day 01, Part 02: %s\n" "${first_basement_position}"
 }
