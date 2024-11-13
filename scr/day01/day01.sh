@@ -4,7 +4,7 @@
 . "./tools/get-input.sh"
 
 # Function to solve Part 1 of Day 01
-part01() {
+day01-part01() {
   local command=$1        # Store the first argument as a command input (expected: "run")
   local floor_position=74 # Default output value for floor position
 
@@ -31,7 +31,7 @@ part01() {
 }
 
 # Function to solve Part 2 of Day 01
-part02() {
+day01-part02() {
   local command=$1                   # Store the first argument as a command input (expected: "run")
   local current_floor=0              # Initialize a counter to track the current floor
   local first_basement_position=1795 # Default output if basement is never reached
