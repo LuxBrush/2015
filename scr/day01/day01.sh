@@ -11,7 +11,7 @@ day01-part01() {
   # Execute the solution if the command is "run"
   if [[ "$command" == "run" ]]; then
     # Retrieve floor data from the input file
-    local floor_data=$(get-input "./day01/input.txt")
+    local floor_data=$(get-input "char" "./day01/input.txt")
     floor_position=0 # Initialize floor position counter to 0
 
     # Loop through each floor in the floor data string
