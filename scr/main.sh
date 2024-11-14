@@ -8,4 +8,4 @@ set -euo pipefail
 echo "AOC 2015:"
 echo "$(day01-part01 "print")"
 echo "$(day01-part02 "print")"
-echo "$(day02-part01 "run")"
+echo "$(day02-part01 "print")"
