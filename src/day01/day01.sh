@@ -3,7 +3,7 @@ ROOT=$(pwd)
 
 # Load external function to retrieve input data from a specified file
 # shellcheck source=../tools/get-input.sh
-. "${ROOT}/tools/get-input.sh"
+. "${ROOT}/tools/get_input.sh"
 
 # Function to solve Part 1 of Day 01
 day01_part01() {

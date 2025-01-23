@@ -2,8 +2,8 @@
 ROOT=$(pwd)
 
 # Load external functions for reading input and finding minimum values
-# shellcheck source=../tools/get-input.sh
-. "${ROOT}/tools/get-input.sh"
+# shellcheck source=../tools/get_input.sh
+. "${ROOT}/tools/get_input.sh"
 # shellcheck source=../tools/min.sh
 . "${ROOT}/tools/min.sh"
 # shellcheck source=../tools/sort.sh
