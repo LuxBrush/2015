@@ -1,10 +1,12 @@
 #!/bin/bash
+ROOT=$(pwd)
 
 # Load external function to retrieve input data from a specified file
-. ./tools/get-input.sh
+# shellcheck source=../tools/get-input.sh
+. "${ROOT}/tools/get-input.sh"
 
 # Function to solve Part 1 of Day 01
-day01-part01() {
+day01_part01() {
   local command=$1        # Store the first argument as a command input (expected: "run")
   local floor_position=74 # Default output value for floor position
 
@@ -12,7 +14,7 @@ day01-part01() {
   if [[ "$command" == "run" ]]; then
     # Retrieve floor data from the input file
     local floor_data=""
-    floor_data=$(get-input "char" "./day01/input.txt")
+    floor_data=$(get_input "char" "./day01/input.txt")
     floor_position=0 # Initialize floor position counter to 0
 
     # Loop through each floor in the floor data string
@@ -32,7 +34,7 @@ day01-part01() {
 }
 
 # Function to solve Part 2 of Day 01
-day01-part02() {
+day01_part02() {
   local command=$1                   # Store the first argument as a command input (expected: "run")
   local current_floor=0              # Initialize a counter to track the current floor
   local first_basement_position=1795 # Default output if basement is never reached
@@ -41,7 +43,7 @@ day01-part02() {
   if [[ "$command" == "run" ]]; then
     # Retrieve floor data from the input file
     local floor_data=""
-    floor_data=$(get-input "char" "./day01/input.txt")
+    floor_data=$(get_input "char" "./day01/input.txt")
     first_basement_position=0 # Initialize position counter
 
     # Loop through each character in the floor data string

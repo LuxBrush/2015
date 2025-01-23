@@ -1,12 +1,16 @@
 #!/bin/bash
+ROOT=$(pwd)
 
 # Load external functions for reading input and finding minimum values
-. ./tools/get-input.sh
-. ./tools/min.sh
-. ./tools/sort.sh
+# shellcheck source=../tools/get-input.sh
+. "${ROOT}/tools/get-input.sh"
+# shellcheck source=../tools/min.sh
+. "${ROOT}/tools/min.sh"
+# shellcheck source=../tools/sort.sh
+. "${ROOT}/tools/sort.sh"
 
 # Function to solve Part 1 of Day 02
-day02-part01() {
+day02_part01() {
   local command=$1                # Store the first argument as a command input (expected: "run")
   local total_square_feet=1586300 # Default output value if not running calculations
 
@@ -16,7 +20,7 @@ day02-part01() {
 
     # Retrieve measurements from input file, one line at a time
     local measurements=""
-    measurements=$(get-input "line" "./day02/input.txt")
+    measurements=$(get_input "line" "./day02/input.txt")
 
     # Loop through each measurement in the list
     for measurement in $measurements; do
@@ -45,7 +49,7 @@ day02-part01() {
 }
 
 # Function to solve Part 2 of Day 02
-day02-part02() {
+day02_part02() {
   local command=$1                # Store the first argument as a command input (expected: "run")
   local total_ribbon_feet=3737498 # Default output value if not running calculations
 
@@ -54,7 +58,7 @@ day02-part02() {
     total_ribbon_feet=0
     # Retrieve box measurements from input file, one line at a time
     local measurements=""
-    measurements=$(get-input "line" "./day02/input.txt")
+    measurements=$(get_input "line" "./day02/input.txt")
 
     # Loop through each measurement in the list
     for measurement in $measurements; do
