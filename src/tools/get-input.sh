@@ -2,7 +2,7 @@
 
 # Function to read content from a file either as lines or individual characters,
 # and store the content in an array for output.
-get-input() {
+get_input() {
   local mode=$1     # Mode to determine if reading by "line" or "char"
   local filename=$2 # File to read from
   local content=()  # Array to store lines or characters from the file
