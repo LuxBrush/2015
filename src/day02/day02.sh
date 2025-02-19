@@ -28,16 +28,16 @@ day02_part01() {
       IFS='x' read -r length width height <<<"$measurement"
 
       # Calculate the areas of the three sides
-      local area_lw=$((length * width))
-      local area_wh=$((width * height))
-      local area_hl=$((height * length))
+      local length_width_area=$((length * width))
+      local width_height_area=$((width * height))
+      local height_length_area=$((height * length))
 
       # Find the smallest side area to add as extra paper
       local smallest_side_area=""
-      smallest_side_area=$(min $area_lw $area_wh $area_hl)
+      smallest_side_area=$(min $length_width_area $width_height_area $height_length_area)
 
       # Calculate required square feet for this box (2* each side + smallest side area)
-      local square_feet=$((2 * area_lw + 2 * area_wh + 2 * area_hl + smallest_side_area))
+      local square_feet=$((2 * length_width_area + 2 * width_height_area + 2 * height_length_area + smallest_side_area))
 
       # Add this box's square feet to the total
       ((total_square_feet += square_feet))
